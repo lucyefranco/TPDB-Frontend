@@ -5,6 +5,10 @@ import Home from '../pages/Home'
 import Register from '../pages/Register'
 import Login from '../pages/Login'
 import Profile from '../pages/Profile'
+import SearchResults from '../pages/SearchResults'
+import AttractionShow from '../pages/Show-Attraction'
+import CreativeShow from '../pages/Show-Creative'
+import ThemeParkShow from '../pages/Show-ThemePark'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const currentUser = localStorage.getItem('id')
@@ -17,6 +21,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 const Routes = (props) => (
   <Switch>
     <Route exact path='/' component={ Home } />
+    <Route path='/results' component={ SearchResults } />
+    <Route path='/attraction/:id' component={ AttractionShow } />
+    <Route path='/creative/:id' component={ CreativeShow } />
+    <Route path='/themepark/:id' component={ ThemeParkShow } />
     <Route path='/register' component={ Register } />
     <Route path='/login' render={ (routeComponentProps) => {
       return  <Login 
