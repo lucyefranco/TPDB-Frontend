@@ -8,3 +8,5 @@ class ThemeParksModel {
         return fetch(`${ url }/${ id }`).then(res => res.json())
     }
 }
+
+export default ThemeParksModel

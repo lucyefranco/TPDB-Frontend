@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import CreativesModel from '../models/creatives'
-// import AttractionDetails from '../components/AttractionDetails'
+import CreativeDetails from '../components/CreativeDetails'
 
 class CreativeShow extends Component {
     state = {
         creativeId: this.props.match.params.id,
-        // attractionInfo: {}
+        creativeInfo: {}
     }
 
     componentDidMount() {
@@ -14,17 +14,17 @@ class CreativeShow extends Component {
 
     fetchCreativesData = () => {
         CreativesModel.show(this.state.creativeId).then(data => {
-            console.log(data)
-            // this.setState({ attractionInfo: data.attraction[0]})
+            console.log(data.creative[0])
+            this.setState({ creativeInfo: data.creative[0]})
         })
     }
 
     render() {
-        // console.log(this.setState.attractionInfo)
+        console.log(this.setState.creativeInfo)
         return (
         <div>
             <h1>Welcome to the Creative Show Page!</h1>
-            {/* <AttractionDetails {...this.state.attractionInfo} /> */}
+            <CreativeDetails {...this.state.creativeInfo} />
         </div>
         )
     }
