@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/v1/themeparks'
+const url = 'http://localhost:4000/api/v1/themeparks'
 
 class ThemeParksModel {
     static all = () => {

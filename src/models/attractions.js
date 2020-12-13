@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/v1/attractions'
+const url = 'http://localhost:4000/api/v1/attractions'
 
 class AttractionsModel {
     static all = () => {
@@ -11,3 +11,5 @@ class AttractionsModel {
         return fetch(`${ url }/byPark/${themeParkId}`).then(res => res.json())
     }
 }
+
+export default AttractionsModel

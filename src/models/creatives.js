@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/v1/creatives'
+const url = 'http://localhost:4000/api/v1/creatives'
 
 class CreativesModel {
     static all = () => {
@@ -8,3 +8,5 @@ class CreativesModel {
         return fetch(`${ url }/${ id }`).then(res => res.json())
     }
 }
+
+export default CreativesModel
