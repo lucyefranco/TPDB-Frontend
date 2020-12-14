@@ -7,6 +7,15 @@ class ThemeParksModel {
     static show = (id) => {
         return fetch(`${ url }/${ id }`).then(res => res.json())
     }
+    static create = (themeParkData) => {
+        return fetch(`${ url }/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(themeParkData)
+        }).then(res => res.json())
+    }
 }
 
 export default ThemeParksModel

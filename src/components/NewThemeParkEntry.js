@@ -3,29 +3,44 @@ import React, { Component } from 'react'
 class NewThemeParkEntry extends Component {
     state = {
         name: '',
+        city: '',
+        state: '',
+        country: '',
+        website: '',
+        operatingCompany: '',
+        openingDate: '',
+        status: true,
         about: '',
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createPost(
-            this.state.rating, 
-            this.state.comment,
+        console.log('handleSubmit works')
+        this.props.createNewPark(
+            this.state.name, 
+            this.state.city,
+            this.state.state,
+            this.state.country,
+            this.state.website, 
+            this.state.operatingCompany,
+            this.state.openingDate,
+            this.state.status, 
+            this.state.about, 
         )
         this.props.onClose()
     }
 
     render () {
-        if(!this.props.show) {
+        if(!this.props.parkShow) {
             return null
         }
 
         return (
             <div>
                 <div>
-                    {/* <button onClick={ this.props.onClose } className="closeButton">
+                    <button onClick={ this.props.onClose } className="closeButton">
                         Close
-                    </button> */}
+                    </button>
                 </div>
                 <h3>Submit a New Attraction</h3>
                 <div>
@@ -103,9 +118,9 @@ class NewThemeParkEntry extends Component {
                                 placeholder="YYYY-MM-DD"
                                 type="date"
                                 onChange={ (e) => {
-                                    this.setState({ website: e.target.value })
+                                    this.setState({ openingDate: e.target.value })
                                 }}
-                                value= { this.state.website }
+                                value= { this.state.openingDate }
                             >
                             </input>
                         </div>
