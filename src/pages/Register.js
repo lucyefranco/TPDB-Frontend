@@ -6,6 +6,7 @@ const Register = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [admin, setAdmin] = useState(false);
 
   const handleName = e => {
     setName(e.target.value)
@@ -19,12 +20,15 @@ const Register = props => {
   const handleConfirmPassword = e => {
     setConfirmPassword(e.target.value)
   }
+  const handleAdmin = () => {
+    setAdmin(false)
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
 
     if (password === confirmPassword) {
-      UserModel.create({ name, email, password })
+      UserModel.create({ name, email, password, admin })
         .then(data => {
           console.log('Successful register', data)
           // redirect to /login
@@ -81,6 +85,11 @@ const Register = props => {
             required
           />
         </div>
+        <input
+        onChange={ handleAdmin }
+        value={ false } 
+        type="hidden">
+        </input>
         <button type="submit">Register</button>
       </form>
     </div>

@@ -3,11 +3,8 @@ import React from 'react'
 const AttachedAttractions = (props) => {
     return (
         <div>
-            <h1> { props.name } </h1>
-            <h3> { props.type } </h3>
-            <h3> { props.openingDate } </h3>
-            <h3>About</h3>
-            <p> { props.about } </p>
+            <h3> { props.name } </h3>
+            <h5> { props.type } </h5>
         </div>
     )
 }
