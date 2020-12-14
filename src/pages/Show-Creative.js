@@ -19,6 +19,11 @@ class CreativeShow extends Component {
         })
     }
 
+    // LINKED ATTRACTIONS
+
+    // admin abilites
+        // edit entry
+
     render() {
         console.log(this.setState.creativeInfo)
         return (

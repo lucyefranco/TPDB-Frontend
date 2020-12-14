@@ -21,12 +21,14 @@ class AttractionShow extends Component {
 
     //get connected creatives
     fetchConnectedCreatives = () => {
-        
-    }
 
+    }
     //use project work model to find byAttraction
     //whichever ids come out... put those into creative model
     //display results from creative model
+
+    // ADMIN ABILITIES
+        // edit entry
 
     render() {
         console.log(this.setState.attractionInfo)
