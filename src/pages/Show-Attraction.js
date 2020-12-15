@@ -1,15 +1,19 @@
 import React, { Component } from 'react'
 import AttractionsModel from '../models/attractions'
+import ProjectWorksModel from '../models/projectWorks'
 import AttractionDetails from '../components/AttractionDetails'
+import CreativesModel from '../models/creatives'
 
 class AttractionShow extends Component {
     state = {
         attractionId: this.props.match.params.id,
-        attractionInfo: {}
+        attractionInfo: {},
+        connectedCreativesIds: []
     }
 
     componentDidMount() {
         this.fetchAttractionData()
+        this.fetchConnectedCreatives()
     }
 
     fetchAttractionData = () => {
@@ -21,7 +25,16 @@ class AttractionShow extends Component {
 
     //get connected creatives
     fetchConnectedCreatives = () => {
+        ProjectWorksModel.byAttraction(this.props.match.params.id).then(data => {
+            console.log(data.attraction)
+            this.setState({ connectedCreativesIds: data.attraction})
+        })
+        this.fetchCreatives()
+    }
 
+    fetchCreatives = () => {
+        console.log(this.state.connectedCreativesIds)
+        
     }
     //use project work model to find byAttraction
     //whichever ids come out... put those into creative model
@@ -31,7 +44,16 @@ class AttractionShow extends Component {
         // edit entry
 
     render() {
-        console.log(this.setState.attractionInfo)
+        
+        // let attractionsList = this.state.attractions && this.state.attractions.map((attraction, index) => {
+        //     return (
+        //         <div>
+        //         <AttachedAttractions { ...attraction } key={ index } />
+        //         <Link to={ `/attraction/${ attraction.id}` } >Read More</Link>
+        //         </div>
+        //     )
+        // })
+
         return (
         <div>
             <h1>Welcome to the Attraction Show Page!</h1>

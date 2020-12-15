@@ -4,7 +4,7 @@ class ProjectWorksModel {
     static byAttraction = (attractionId) => {
         return fetch(`${ url }/byAttraction/${ attractionId }`).then(res => res.json())
     }
-    static show = (creativeId) => {
+    static byCreative = (creativeId) => {
         return fetch(`${ url }/byCreative/${ creativeId }`).then(res => res.json())
     }
 }
