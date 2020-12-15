@@ -44,11 +44,16 @@ class ThemeParkShow extends Component {
             <ThemeParkDetails {...this.state.themeParkInfo} />
             <div>
             <div>
+                <h5>ADMIN ONLY</h5>
                 <button> remove </button>
                 <button> edit </button>
             </div>
                 <h2>Known Attractions</h2>
                 { this.state.attractions ? attractionsList : "Loading.." }
+                <div>
+                    <h5>ADMIN ONLY</h5>
+                    <button> add attraction </button>
+                </div>
             </div>
         </div>
         )
