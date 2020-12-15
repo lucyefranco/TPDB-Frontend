@@ -33,6 +33,7 @@ class CreativeShow extends Component {
 
     // admin abilites
         // edit entry
+        // link to existing attraction
 
     render() {
         console.log(this.setState.creativeInfo)

@@ -34,6 +34,7 @@ class AttractionShow extends Component {
 
     // ADMIN ABILITIES
         // edit entry
+        // link to existing creative
 
     render() {
         
@@ -41,7 +42,7 @@ class AttractionShow extends Component {
             return (
                 <div>
                     <AttachedCreatives { ...creative } key={ index } />
-                    <Link to={ `/creative/${creative.id}` } >Read More</Link>
+                    <Link to={ `/creatives/${creative.id}` } >Read More</Link>
                 </div>
             )
         })
