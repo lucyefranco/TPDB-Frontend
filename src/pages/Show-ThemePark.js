@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import ThemeParksModel from '../models/themeParks'
 import AttractionsModel from '../models/attractions'
 import ThemeParkDetails from '../components/ThemeParkDetails'
 import AttachedAttractions from '../components/AttachedAttractions'
+import NewAttractionEntry from '../components/NewAttractionEntry'
 
 class ThemeParkShow extends Component {
     state = {
         themeParkId: this.props.match.params.id,
         themeParkInfo: {},
-        attractions: []
+        attractions: [],
+        attractionShow: false
     }
 
     componentDidMount() {
@@ -30,11 +33,35 @@ class ThemeParkShow extends Component {
         })
     }
 
+    createNewAttraction = (name, type, openingDate, status, about) => {
+        let newAttraction = {
+            themeParkId: this.props.match.params.id,        
+            name: name,
+            type: type,
+            openingDate: openingDate,
+            status: status,
+            about: about,
+        }
+        AttractionsModel.create(newAttraction).then((res) => {
+            console.log('new attraction created')
+            console.log(newAttraction)
+            this.fetchAttachedAttractionData()
+        })
+    }
+
+    showAttractionModal = e => {
+        this.setState({
+            attractionShow: !this.state.attractionShow
+        })
+    }
+
     render() {
-        console.log(this.state.attractions)
         let attractionsList = this.state.attractions && this.state.attractions.map((attraction, index) => {
             return (
+                <div>
                 <AttachedAttractions { ...attraction } key={ index } />
+                <Link to={ `/attraction/${ attraction.id}` } >Read More</Link>
+                </div>
             )
         })
 
@@ -42,7 +69,7 @@ class ThemeParkShow extends Component {
         <div>
             <h1>Welcome to the Theme Park Show Page!</h1>
             <ThemeParkDetails {...this.state.themeParkInfo} />
-            <div>
+        <div>
             <div>
                 <h5>ADMIN ONLY</h5>
                 <button> remove </button>
@@ -52,7 +79,12 @@ class ThemeParkShow extends Component {
                 { this.state.attractions ? attractionsList : "Loading.." }
                 <div>
                     <h5>ADMIN ONLY</h5>
-                    <button> add attraction </button>
+                    <NewAttractionEntry
+                        onClose= { this.showAttractionModal}
+                        showAttraction= { this.state.attractionShow }
+                        createNewAttraction={ this.createNewAttraction }
+                        />
+                    <button onClick={e => {this.showAttractionModal()}}> add attraction </button>
                 </div>
             </div>
         </div>

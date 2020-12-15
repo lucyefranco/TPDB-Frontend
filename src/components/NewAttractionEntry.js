@@ -5,33 +5,33 @@ class NewAttractionEntry extends Component {
         name: '',
         type: '',
         openingDate: '',
-        status: '',
+        status: true,
         about: '',
     }
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.createPost(
+        this.props.createNewAttraction(
             this.state.name, 
             this.state.type,
             this.state.openingDate,
             this.state.status,
             this.state.about
         )
-        // this.props.onClose()
+        this.props.onClose()
     }
 
     render () {
-        // if(!this.props.show) {
-        //     return null
-        // }
+        if(!this.props.showAttraction) {
+            return null
+        }
 
         return (
             <div>
                 <div>
-                    {/* <button onClick={ this.props.onClose } className="closeButton">
+                    <button onClick={ this.props.onClose } className="closeButton">
                         Close
-                    </button> */}
+                    </button>
                 </div>
                 <h3>Submit a New Attraction</h3>
                 <div>
@@ -58,10 +58,10 @@ class NewAttractionEntry extends Component {
                                 }}
                                 value= { this.state.type }
                             >
-                                <option value="ride"> Ride </option>
-                                <option value="show"> Show </option>
-                                <option value="nighttime spectacular"> Nighttime Spectacular </option>
-                                <option value="walkthrough"> Walkthrough </option>
+                                <option value="Ride"> Ride </option>
+                                <option value="Show"> Show </option>
+                                <option value="Nighttime spectacular"> Nighttime Spectacular </option>
+                                <option value="Walkthrough"> Walkthrough </option>
                             </select>
                             <label>Opening Date: </label>
                             <input
