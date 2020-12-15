@@ -10,6 +10,9 @@ class AttractionsModel {
     static showByPark = (themeParkId) => {
         return fetch(`${ url }/byPark/${themeParkId}`).then(res => res.json())
     }
+    static showCreatives = (attractionId) => {
+        return fetch(`${url}/findCreatives/${attractionId}`).then(res => res.json())
+    }
     static create = (newAttraction) => {
         return fetch(`${ url }/`, {
             method: "POST",

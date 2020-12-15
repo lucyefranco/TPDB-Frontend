@@ -7,6 +7,9 @@ class CreativesModel {
     static show = (id) => {
         return fetch(`${ url }/${ id }`).then(res => res.json())
     }
+    static showAttractions = (id) => {
+        return fetch(`${url}/findAttractions/${id}`).then(res => res.json())
+    }
 }
 
 export default CreativesModel

@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import AttractionsModel from '../models/attractions'
-import ProjectWorksModel from '../models/projectWorks'
 import AttractionDetails from '../components/AttractionDetails'
-import CreativesModel from '../models/creatives'
+import AttachedCreatives from '../components/AttachedCreatives'
+
 
 class AttractionShow extends Component {
     state = {
         attractionId: this.props.match.params.id,
         attractionInfo: {},
-        connectedCreativesIds: []
+        connectedCreatives: []
     }
 
     componentDidMount() {
@@ -25,40 +26,34 @@ class AttractionShow extends Component {
 
     //get connected creatives
     fetchConnectedCreatives = () => {
-        ProjectWorksModel.byAttraction(this.props.match.params.id).then(data => {
-            console.log(data.attraction)
-            this.setState({ connectedCreativesIds: data.attraction})
+        AttractionsModel.showCreatives(this.state.attractionId).then(data => {
+            console.log(data.linkedCreatives)
+            this.setState({ connectedCreatives: data.linkedCreatives})
         })
-        this.fetchCreatives()
     }
-
-    fetchCreatives = () => {
-        console.log(this.state.connectedCreativesIds)
-        
-    }
-    //use project work model to find byAttraction
-    //whichever ids come out... put those into creative model
-    //display results from creative model
 
     // ADMIN ABILITIES
         // edit entry
 
     render() {
         
-        // let attractionsList = this.state.attractions && this.state.attractions.map((attraction, index) => {
-        //     return (
-        //         <div>
-        //         <AttachedAttractions { ...attraction } key={ index } />
-        //         <Link to={ `/attraction/${ attraction.id}` } >Read More</Link>
-        //         </div>
-        //     )
-        // })
+        let creativesList = this.state.connectedCreatives && this.state.connectedCreatives.map((creative, index) => {
+            return (
+                <div>
+                    <AttachedCreatives { ...creative } key={ index } />
+                    <Link to={ `/creative/${creative.id}` } >Read More</Link>
+                </div>
+            )
+        })
 
         return (
         <div>
             <h1>Welcome to the Attraction Show Page!</h1>
             <AttractionDetails {...this.state.attractionInfo} />
+            <h2>Connected Creatives: </h2>
+            { this.state.connectedCreatives ? creativesList : "Loading.." }
         </div>
+            
         )
     }
 }
