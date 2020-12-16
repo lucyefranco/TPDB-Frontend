@@ -30,7 +30,7 @@ class ViewAttractions extends Component {
         })
         return (
             <div>
-                <h1>Here's your list of attractions</h1>
+                <h2>Here's your list of attractions</h2>
                 { this.state.attractions ? attractionsList : 'Loading...' }
             </div>
         )

@@ -30,7 +30,7 @@ class ViewThemeParks extends Component {
         })
         return (
             <div>
-                <h1>Here's your list of theme parks</h1>
+                <h2>Here's your list of theme parks</h2>
                 { this.state.themeParks ? themeParksList : 'Loading...' }
             </div>
         )

@@ -1,6 +1,21 @@
 // Universal Styling
+.App {
+    font-family: 'Roboto', sans-serif;
+}
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 7vw;
+    color: #193684;
+    margin: 0 auto;
+}
 
-
+// Home
+.homeHeader {
+    background: url(https://imgur.com/hthguko.jpg);
+    height: 45vh;
+    background-size: cover;
+    padding: 30px;
+}
 
 // Dashboard
 
