@@ -3,6 +3,7 @@ import NewThemeParkEntry from '../components/NewThemeParkEntry'
 import ThemeParksModel from '../models/themeParks'
 import AttractionsModel from '../models/attractions'
 import CreativesModel from '../models/creatives'
+import UserModel from '../models/user'
 
 class adminDashboard extends Component {
     state = {
@@ -10,13 +11,15 @@ class adminDashboard extends Component {
         attractionShow: false,
         attractions: [],
         creatives: [],
-        themeParks: []
+        themeParks: [],
+        users: []
     }
 
     componentDidMount = () => {
         this.getAllAttractions()
         this.getAllCreatives()
         this.getAllThemeParks()
+        this.getAllUsers()
     }
 
     getAllAttractions = () => {
@@ -35,6 +38,12 @@ class adminDashboard extends Component {
         ThemeParksModel.all().then(data => {
             console.log(data.themeParks)
             this.setState({ themeParks: data.themeParks })
+        })
+    }
+    getAllUsers = () => {
+        UserModel.all().then(data => {
+            console.log(data.users)
+            this.setState({ users: data.users })
         })
     }
 
@@ -69,11 +78,12 @@ class adminDashboard extends Component {
     render() {
         return (
             <div>
-                <h1>Welcome to the Dashboard! </h1>
+                <h1>Welcome to the Admin Dashboard! </h1>
                 <div>
                     <h3> { this.state.themeParks.length } Theme Parks</h3>
                     <h3> { this.state.attractions.length } Attractions</h3>
                     <h3> { this.state.creatives.length } Creatives</h3>
+                    <h3> { this.state.users.length } Users </h3>
                 </div>
                 {/* THEME PARKS */}
                 <button 
