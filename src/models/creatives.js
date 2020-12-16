@@ -10,6 +10,15 @@ class CreativesModel {
     static showAttractions = (id) => {
         return fetch(`${url}/findAttractions/${id}`).then(res => res.json())
     }
+    static create = (creativeData) => {
+        return fetch(`${ url }/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(creativeData)
+        }).then(res => res.json())
+    }
 }
 
 export default CreativesModel

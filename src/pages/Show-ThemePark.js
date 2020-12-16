@@ -100,7 +100,7 @@ class ThemeParkShow extends Component {
             </div>
                 <h2>Known Attractions</h2>
                 { this.state.attractions ? attractionsList : "Loading.." }
-
+            
             </div>
         </div>
         )

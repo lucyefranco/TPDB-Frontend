@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import NewThemeParkEntry from '../components/NewThemeParkEntry'
+import NewCreativeEntry from '../components/NewCreativeEntry'
 import ThemeParksModel from '../models/themeParks'
 import AttractionsModel from '../models/attractions'
 import CreativesModel from '../models/creatives'
@@ -11,6 +12,7 @@ class adminDashboard extends Component {
         currentUser: {},
         parkShow: false,
         attractionShow: false,
+        creativeShow: false,
         attractions: [],
         creatives: [],
         themeParks: [],
@@ -57,13 +59,12 @@ class adminDashboard extends Component {
         })
     }
 
-    // Park Modal
+    //create new park
     showParkModal = e => {
         this.setState({
             parkShow: !this.state.parkShow
         })
     }
-    //create new park
     createNewPark = (name, city, state, country, website, operatingCompany, openingDate, status, about) => {
         let newPark = {
             name: name,
@@ -83,6 +84,23 @@ class adminDashboard extends Component {
     }
 
     //create new creative
+    showCreativeModal = e => {
+        this.setState({
+            creativeShow: !this.state.creativeShow
+        })
+    }
+    createNewCreative = (name, about) => {
+        let newCreative = {
+            name: name,
+            status: true,
+            about: about
+        }
+        CreativesModel.create(newCreative).then((res) => {
+            console.log(newCreative)
+            this.getAllCreatives()
+        })
+    }
+
     //create new attraction
 
     render() {
@@ -106,7 +124,18 @@ class adminDashboard extends Component {
                     <NewThemeParkEntry 
                         onClose={ this.showParkModal } 
                         parkShow={ this.state.parkShow } 
-                        createNewPark={ this.createNewPark }/>
+                        createNewPark={ this.createNewPark }
+                        
+                    />
+                    {/* CREATIVES */}
+                    <button
+                    onClick={ e => { this.showCreativeModal() }}
+                    > Create a new Creative entry </button>
+                    <NewCreativeEntry
+                        onClose={ this.showCreativeModal }
+                        creativeShow={ this.state.creativeShow }
+                        createNewCreative= { this.createNewCreative }
+                    />
                     </>
                     :
                     <>
