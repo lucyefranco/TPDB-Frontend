@@ -31,6 +31,21 @@ class FavoritesModel {
             body: JSON.stringify(parkData)
         }).then(res => res.json())
     }
+    static userCreatives = (userId) => {
+        return fetch(`${ url }/creatives/byUser/${ userId }`).then(res => res.json())
+    }
+    static byCreative = (creativeId) => {
+        return fetch(`${ url }/creatives/byCreative/${ creativeId }`).then(res => res.json())
+    }
+    static createCreative = (creativeData) => {
+        return fetch(`${ url }/creatives/`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(creativeData)
+        }).then(res => res.json())
+    }
 }
 
 export default FavoritesModel

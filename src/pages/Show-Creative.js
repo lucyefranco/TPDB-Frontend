@@ -4,6 +4,7 @@ import CreativesModel from '../models/creatives'
 import CreativeDetails from '../components/CreativeDetails'
 import AttachedAttractions from '../components/AttachedAttractions'
 import UserModel from '../models/user'
+import FavoritesModel from '../models/favorites'
 
 class CreativeShow extends Component {
     state = {
@@ -11,18 +12,39 @@ class CreativeShow extends Component {
         currentUser: {},
         creativeId: this.props.match.params.id,
         creativeInfo: {},
-        connectedAttractions: []
+        connectedAttractions: [],
+        favorites: []
     }
 
     componentDidMount() {
         this.fetchCreativesData()
         this.fetchConnectedAttractions()
         this.getCurrentUser()
+        this.getAllFavorites()
     }
 
     getCurrentUser = () => {
         UserModel.show(this.state.userId).then(data => {
             this.setState({ currentUser: data.user[0] })
+        })
+    }
+
+    addToFavorites = () => {
+        let newFavorite = {
+            creativeId: this.props.match.params.id,
+            userId: localStorage.getItem('id'),
+            creativeName: this.state.creativeInfo.name
+        }
+        FavoritesModel.createCreative(newFavorite).then((res) => {
+            console.log(newFavorite)
+            this.getAllFavorites()
+        })
+    }
+
+    getAllFavorites = () => {
+        FavoritesModel.byCreative(this.state.creativeId).then(data => {
+            console.log(data.creativeFavorites)
+            this.setState({favorites: data.creativeFavorites})
         })
     }
 
@@ -46,7 +68,6 @@ class CreativeShow extends Component {
         // link to existing attraction
 
     render() {
-        console.log(this.setState.creativeInfo)
         let attractionsList = this.state.connectedAttractions && this.state.connectedAttractions.map((attraction, index) => {
             return (
                 <div>
@@ -59,6 +80,10 @@ class CreativeShow extends Component {
         <div>
             <h1>Welcome to the Creative Show Page!</h1>
             <CreativeDetails {...this.state.creativeInfo} />
+            <button
+            onClick={ e => { this.addToFavorites() }}
+            >Add to Favorites</button>
+            <h3> { this.state.favorites.length } users have added this to their favorites</h3>
             { this.state.currentUser.admin ?
             <>
                 <button>Edit</button>
