@@ -28,7 +28,7 @@ class adminDashboard extends Component {
     getCurrentUser = () => {
         console.log(this.state.userId)
         UserModel.show(this.state.userId).then(data => {
-            this.setState( {currentUser: data.user[0]})
+            this.setState({ currentUser: data.user[0] })
         })
     }
 
