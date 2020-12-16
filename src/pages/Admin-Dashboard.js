@@ -105,7 +105,7 @@ class adminDashboard extends Component {
                     </button>
                     <NewThemeParkEntry 
                         onClose={ this.showParkModal } 
-                        parkShow={ this.state.parkShow} 
+                        parkShow={ this.state.parkShow } 
                         createNewPark={ this.createNewPark }/>
                     </>
                     :
@@ -113,7 +113,6 @@ class adminDashboard extends Component {
                     <p> You do not have access to this page.</p>
                     </>
                     }
-
             </div>
         )
     }

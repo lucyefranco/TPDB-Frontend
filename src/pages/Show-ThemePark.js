@@ -5,9 +5,12 @@ import AttractionsModel from '../models/attractions'
 import ThemeParkDetails from '../components/ThemeParkDetails'
 import AttachedAttractions from '../components/AttachedAttractions'
 import NewAttractionEntry from '../components/NewAttractionEntry'
+import UserModel from '../models/user'
 
 class ThemeParkShow extends Component {
     state = {
+        userId: localStorage.getItem('id'),
+        currentUser: {},
         themeParkId: this.props.match.params.id,
         themeParkInfo: {},
         attractions: [],
@@ -17,6 +20,13 @@ class ThemeParkShow extends Component {
     componentDidMount() {
         this.fetchThemeParksData()
         this.fetchAttachedAttractionData()
+        this.getCurrentUser()
+    }
+
+    getCurrentUser = () => {
+        UserModel.show(this.state.userId).then(data => {
+            this.setState({ currentUser: data.user[0] })
+        })
     }
 
     fetchThemeParksData = () => {
@@ -71,14 +81,10 @@ class ThemeParkShow extends Component {
             <ThemeParkDetails {...this.state.themeParkInfo} />
         <div>
             <div>
-                <h5>ADMIN ONLY</h5>
-                <button> remove </button>
+                { this.state.currentUser.admin ? 
+                <>
                 <button> edit </button>
-            </div>
-                <h2>Known Attractions</h2>
-                { this.state.attractions ? attractionsList : "Loading.." }
                 <div>
-                    <h5>ADMIN ONLY</h5>
                     <NewAttractionEntry
                         onClose= { this.showAttractionModal}
                         showAttraction= { this.state.attractionShow }
@@ -86,6 +92,15 @@ class ThemeParkShow extends Component {
                         />
                     <button onClick={e => {this.showAttractionModal()}}> add attraction </button>
                 </div>
+                </>
+                :
+                <></>
+                }
+
+            </div>
+                <h2>Known Attractions</h2>
+                { this.state.attractions ? attractionsList : "Loading.." }
+
             </div>
         </div>
         )

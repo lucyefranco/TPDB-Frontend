@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom'
 import CreativesModel from '../models/creatives'
 import CreativeDetails from '../components/CreativeDetails'
 import AttachedAttractions from '../components/AttachedAttractions'
+import UserModel from '../models/user'
 
 class CreativeShow extends Component {
     state = {
+        userId: localStorage.getItem('id'),
+        currentUser: {},
         creativeId: this.props.match.params.id,
         creativeInfo: {},
         connectedAttractions: []
@@ -14,6 +17,13 @@ class CreativeShow extends Component {
     componentDidMount() {
         this.fetchCreativesData()
         this.fetchConnectedAttractions()
+        this.getCurrentUser()
+    }
+
+    getCurrentUser = () => {
+        UserModel.show(this.state.userId).then(data => {
+            this.setState({ currentUser: data.user[0] })
+        })
     }
 
     fetchCreativesData = () => {
@@ -49,6 +59,15 @@ class CreativeShow extends Component {
         <div>
             <h1>Welcome to the Creative Show Page!</h1>
             <CreativeDetails {...this.state.creativeInfo} />
+            { this.state.currentUser.admin ?
+            <>
+                <button>Edit</button>
+                <button>Add Connected Attraction</button>
+            </>
+            :
+            <>
+            </>
+            }
             <h2>Connected Attractions</h2>
             { this.state.connectedAttractions ? attractionsList : "Loading.." }
         </div>
