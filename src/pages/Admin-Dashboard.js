@@ -7,6 +7,8 @@ import UserModel from '../models/user'
 
 class adminDashboard extends Component {
     state = {
+        userId: localStorage.getItem('id'),
+        currentUser: {},
         parkShow: false,
         attractionShow: false,
         attractions: [],
@@ -20,6 +22,14 @@ class adminDashboard extends Component {
         this.getAllCreatives()
         this.getAllThemeParks()
         this.getAllUsers()
+        this.getCurrentUser()
+    }
+
+    getCurrentUser = () => {
+        console.log(this.state.userId)
+        UserModel.show(this.state.userId).then(data => {
+            this.setState( {currentUser: data.user[0]})
+        })
     }
 
     getAllAttractions = () => {
@@ -77,24 +87,33 @@ class adminDashboard extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Welcome to the Admin Dashboard! </h1>
                 <div>
-                    <h3> { this.state.themeParks.length } Theme Parks</h3>
-                    <h3> { this.state.attractions.length } Attractions</h3>
-                    <h3> { this.state.creatives.length } Creatives</h3>
-                    <h3> { this.state.users.length } Users </h3>
-                </div>
-                {/* THEME PARKS */}
-                <button 
-                onClick={ e => {this.showParkModal()}}
-                > 
-                Create a new Theme Park entry
-                </button>
-                <NewThemeParkEntry 
-                    onClose={ this.showParkModal } 
-                    parkShow={ this.state.parkShow} 
-                    createNewPark={ this.createNewPark }/>
+                    { this.state.currentUser.admin ? 
+                    <>
+                    <h1>Welcome to the Admin Dashboard! </h1>
+                    <div>
+                        <h3> { this.state.themeParks.length } Theme Parks</h3>
+                        <h3> { this.state.attractions.length } Attractions</h3>
+                        <h3> { this.state.creatives.length } Creatives</h3>
+                        <h3> { this.state.users.length } Users </h3>
+                    </div>
+                    {/* THEME PARKS */}
+                    <button 
+                    onClick={ e => {this.showParkModal()}}
+                    > 
+                    Create a new Theme Park entry
+                    </button>
+                    <NewThemeParkEntry 
+                        onClose={ this.showParkModal } 
+                        parkShow={ this.state.parkShow} 
+                        createNewPark={ this.createNewPark }/>
+                    </>
+                    :
+                    <>
+                    <p> You do not have access to this page.</p>
+                    </>
+                    }
+
             </div>
         )
     }

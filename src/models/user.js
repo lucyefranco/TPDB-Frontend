@@ -26,7 +26,11 @@ export default class UserModel {
 
   static all() {
     return fetch(`${ REACT_APP_API_URL }/users/`).then(res => res.json()) 
-}
+  }
+
+  static show(id) {
+    return fetch(`${ REACT_APP_API_URL }/users/${id}`).then(res => res.json())
+  }
 
   static logout() {
     return fetch(`${REACT_APP_API_URL}/auth/logout`, {
