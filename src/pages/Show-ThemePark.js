@@ -6,6 +6,7 @@ import ThemeParkDetails from '../components/ThemeParkDetails'
 import AttachedAttractions from '../components/AttachedAttractions'
 import NewAttractionEntry from '../components/NewAttractionEntry'
 import UserModel from '../models/user'
+import FavoritesModel from '../models/favorites'
 
 class ThemeParkShow extends Component {
     state = {
@@ -14,13 +15,15 @@ class ThemeParkShow extends Component {
         themeParkId: this.props.match.params.id,
         themeParkInfo: {},
         attractions: [],
-        attractionShow: false
+        attractionShow: false,
+        favorites: []
     }
 
     componentDidMount() {
         this.fetchThemeParksData()
         this.fetchAttachedAttractionData()
         this.getCurrentUser()
+        this.getAllFavorites()
     }
 
     getCurrentUser = () => {
@@ -33,6 +36,25 @@ class ThemeParkShow extends Component {
         ThemeParksModel.show(this.state.themeParkId).then(data => {
             console.log(data.themePark[0])
             this.setState({ themeParkInfo: data.themePark[0] })
+        })
+    }
+
+    addToFavorites = () => {
+        let newFavorite = {
+            themeParkId: this.props.match.params.id,
+            userId: localStorage.getItem('id'),
+            themeParkName: this.state.themeParkInfo.name
+        }
+        FavoritesModel.createPark(newFavorite).then((res) => {
+            console.log(newFavorite)
+            this.getAllFavorites()
+        })
+    }
+
+    getAllFavorites = () => {
+        FavoritesModel.byPark(this.state.themeParkId).then(data => {
+            console.log(data.themeParkFavorites)
+            this.setState({favorites: data.themeParkFavorites})
         })
     }
 
@@ -79,6 +101,10 @@ class ThemeParkShow extends Component {
         <div>
             <h1>Welcome to the Theme Park Show Page!</h1>
             <ThemeParkDetails {...this.state.themeParkInfo} />
+            <button
+            onClick={ e => { this.addToFavorites() }}
+            >Add to Favorites</button>
+            <h3> { this.state.favorites.length } users have added this to their favorites</h3>
         <div>
             <div>
                 { this.state.currentUser.admin ? 

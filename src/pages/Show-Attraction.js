@@ -4,6 +4,7 @@ import AttractionsModel from '../models/attractions'
 import UserModel from '../models/user'
 import AttractionDetails from '../components/AttractionDetails'
 import AttachedCreatives from '../components/AttachedCreatives'
+import FavoritesModel from '../models/favorites'
 
 
 class AttractionShow extends Component {
@@ -12,12 +13,14 @@ class AttractionShow extends Component {
         currentUser: {},
         attractionId: this.props.match.params.id,
         attractionInfo: {},
-        connectedCreatives: []
+        connectedCreatives: [],
+        favorites: []
     }
 
     componentDidMount() {
         this.fetchAttractionData()
         this.fetchConnectedCreatives()
+        this.getAllFavorites()
     }
 
     getCurrentUser = () => {
@@ -41,6 +44,25 @@ class AttractionShow extends Component {
         })
     }
 
+    addToFavorites = () => {
+        let newFavorite = {
+            attractionId: this.props.match.params.id,
+            userId: localStorage.getItem('id'),
+            attractionName: this.state.attractionInfo.name
+        }
+        FavoritesModel.createAttraction(newFavorite).then((res) => {
+            console.log(newFavorite)
+            // this.getAllFavorites
+        })
+    }
+
+    getAllFavorites = () => {
+        FavoritesModel.byAttraction(this.state.attractionId).then(data => {
+            console.log(data.attractionFavorites)
+            this.setState({favorites: data.attractionFavorites})
+        })
+    }
+
     // ADMIN ABILITIES
         // edit entry
         // link to existing creative
@@ -59,7 +81,12 @@ class AttractionShow extends Component {
         return (
         <div>
             <h1>Welcome to the Attraction Show Page!</h1>
+
             <AttractionDetails {...this.state.attractionInfo} />
+            <button
+            onClick={ e => { this.addToFavorites() }}
+            >Add to Favorites</button>
+            <h3> { this.state.favorites.length } users have added this to their favorites</h3>
             { this.state.currentUser.admin ?
             <>
             
