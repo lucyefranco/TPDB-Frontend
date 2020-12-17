@@ -98,3 +98,80 @@ h5 {
 
 
 // Show Pages
+.showFavorite {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50vw;
+    margin: 0 auto;
+}
+button {
+    background-color: #311984;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 20vw;
+    border-style: none;
+
+    &:hover {
+        opacity: 90%;
+        transform: scale(1.05);
+    }
+}
+.showProps {
+    // display: flex;
+    width: 80vw;
+    margin: 0 auto;
+    background-color: #D8D8D8;
+    padding: 10px;
+}
+.showDetails {
+    width: 50vw;
+    margin: 0 auto;
+}
+.showAbout {
+    display: flex;
+    padding: 10px;
+}
+
+.showAbout p {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.showAbout h4 {
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.connections {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    width: 50vw;
+}   
+
+.connections h5 {
+    margin: 0 auto;
+}
+
+.connections a {
+    margin: auto;
+    background-color: #311984;
+    color: white;
+    font-weight: bold;
+    padding: 2px;
+    text-align: center;
+    border-radius: 5px;
+    width: 20vw;
+    font-size: 2vw;
+    border-style: none;
+
+    &:hover {
+        opacity: 90%;
+        transform: scale(1.05);
+    }
+}

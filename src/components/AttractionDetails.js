@@ -2,14 +2,15 @@ import React from 'react'
 
 const AttractionDetails = (props) => {
     return (
-        <div>
+        <div className="showProps">
             <div className="showDetails">
-                <h5> { props.type } </h5>
-                <h5> { props.openingDate } </h5>
+                <h5> Type: { props.type } </h5>
+                <h5> Opening Date: { props.openingDate } </h5>
             </div>
-
-            <h4>About</h4>
-            <p> { props.about } </p>
+            <div className="showAbout">
+                <h4>About</h4>
+                <p> { props.about } </p>
+            </div>
         </div>
     )
 }

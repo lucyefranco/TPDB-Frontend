@@ -52,7 +52,7 @@ class AttractionShow extends Component {
         }
         FavoritesModel.createAttraction(newFavorite).then((res) => {
             console.log(newFavorite)
-            // this.getAllFavorites
+            this.getAllFavorites()
         })
     }
 
@@ -71,9 +71,9 @@ class AttractionShow extends Component {
         
         let creativesList = this.state.connectedCreatives && this.state.connectedCreatives.map((creative, index) => {
             return (
-                <div>
+                <div className="connections">
                     <AttachedCreatives { ...creative } key={ index } />
-                    <Link to={ `/creatives/${creative.id}` } >Read More</Link>
+                    <Link to={ `/creatives/${creative.id}`} className="seeMoreLink" >Read More</Link>
                 </div>
             )
         })
@@ -81,36 +81,35 @@ class AttractionShow extends Component {
         return (
         <div>
             <h2> {this.state.attractionInfo.name}</h2>
-            { this.state.currentUser ?
-                <>
-                <button
-                onClick={ e => { this.addToFavorites() }}
-                >Add to Favorites</button>
-                </>
-                :
-                <>
-                    <p>Log in to save to your favorites!</p>
-                </>
-            }
             <div className="showFavorite">
-
+                { this.state.userId ?
+                    <>
+                    <button
+                    onClick={ e => { this.addToFavorites() }}
+                    >Add to Favorites</button>
+                    </>
+                    :
+                    <>
+                        <p>Log in to save to your favorites!</p>
+                    </>
+                }
                 <h5> { this.state.favorites.length } users have added this to their favorites</h5>
             </div>
 
             <AttractionDetails {...this.state.attractionInfo} />
             { this.state.currentUser.admin ?
             <>
-            
+            <button>Edit</button>
             </>
             :
             <>
-            <button>Edit</button>
+            
             </>
             }
             
             
-            <h2>Connected Creatives: </h2>
-            { this.state.connectedCreatives ? creativesList : "Loading.." }
+            <h4>Connected Creatives: </h4>
+            { this.state.connectedCreatives ? creativesList : "No creatives connected to this attraction." }
         </div>
             
         )

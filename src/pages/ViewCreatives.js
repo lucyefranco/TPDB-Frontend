@@ -22,15 +22,14 @@ class ViewThemeParks extends Component {
     render() {
         let creativesList = this.state.creatives && this.state.creatives.map((creative, index) => {
             return (
-                <div key={ index }>
+                <div key={ index } className="previewCard">
                     <CreativePreview { ...creative } />
-                    <Link to={ `/creatives/${creative.id}` }>See More</Link>
                 </div>
             )
         })
         return (
             <div>
-                <h2>Here's your list of Creatives!</h2>
+                <h2> Creatives </h2>
                 { this.state.creatives ? creativesList : 'Loading...' }
             </div>
         )
