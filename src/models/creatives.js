@@ -19,6 +19,7 @@ class CreativesModel {
             body: JSON.stringify(creativeData)
         }).then(res => res.json())
     }
+
 }
 
 export default CreativesModel

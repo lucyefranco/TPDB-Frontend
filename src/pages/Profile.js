@@ -23,16 +23,31 @@ class Profile extends Component {
       this.setState({ favoriteAttractions: data.attractionFavorites})
     })
   }
+  deleteFavoriteAttraction = (id) => {
+      FavoritesModel.deleteAttraction(id).then((res) => {
+      this.findFavoriteAttractions()
+    })
+  }
   findFavoriteParks = () => {
     FavoritesModel.userParks(this.state.userId).then(data => {
       console.log(data)
       this.setState({ favoriteParks: data.themeParkFavorites })
     })
   }
+  deleteFavoritePark = (id) => {
+    FavoritesModel.deletePark(id).then((res) => {
+      this.findFavoriteParks()
+    })
+  }
   findFavoriteCreatives = () => {
     FavoritesModel.userCreatives(this.state.userId).then(data => {
       console.log(data)
       this.setState({ favoriteCreatives: data.creativeFavorites })
+    })
+  }
+  deleteFavoriteCreative = (id) => {
+    FavoritesModel.deleteCreative(id).then((res) => {
+      this.findFavoriteCreatives()
     })
   }
 
@@ -43,6 +58,8 @@ class Profile extends Component {
               <Link to={ `/attractions/${attraction.attractionId}` } className="seeMoreLink">
               <DisplayFavorites { ...attraction } key={ index } />
               </Link>
+              <button onClick={ e => {this.deleteFavoriteAttraction(attraction.id)}
+              }> Remove </button>
           </div>
       )
     })
@@ -53,6 +70,8 @@ class Profile extends Component {
               <Link to={ `/themeParks/${park.themeParkId}` }  className="seeMoreLink">
               <DisplayFavorites { ...park } key={ index } />
               </Link>
+              <button onClick={ e => {this.deleteFavoritePark(park.id)}
+              }> Remove </button>
           </div>
       )
     })
@@ -63,6 +82,8 @@ class Profile extends Component {
               <Link to={ `/creatives/${creative.creativeId}` } className="seeMoreLink" >
               <DisplayFavorites { ...creative} key={ index } />
               </Link>
+              <button onClick={ e => {this.deleteFavoriteCreative(creative.id)}
+              }> Remove </button>
           </div>
       )
     })

@@ -16,6 +16,14 @@ class FavoritesModel {
             body: JSON.stringify(attractionData)
         }).then(res => res.json())
     }
+    static deleteAttraction = (id) => {
+        return fetch (`${ url }/attractions/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
+    }
     static userParks = (userId) => {
         return fetch(`${ url }/themeParks/byUser/${ userId }`).then(res => res.json())
     }
@@ -31,6 +39,14 @@ class FavoritesModel {
             body: JSON.stringify(parkData)
         }).then(res => res.json())
     }
+    static deletePark = (id) => {
+        return fetch (`${ url }/themeParks/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
+    }
     static userCreatives = (userId) => {
         return fetch(`${ url }/creatives/byUser/${ userId }`).then(res => res.json())
     }
@@ -45,6 +61,14 @@ class FavoritesModel {
             },
             body: JSON.stringify(creativeData)
         }).then(res => res.json())
+    }
+    static deleteCreative = (id) => {
+        return fetch (`${ url }/creatives/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        })
     }
 }
 
