@@ -27,7 +27,7 @@ class NewAttractionEntry extends Component {
         }
 
         return (
-            <div>
+            <div className="newEntry">
                 <div>
                     <button onClick={ this.props.onClose } className="closeButton">
                         Close
