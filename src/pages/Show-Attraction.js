@@ -80,13 +80,24 @@ class AttractionShow extends Component {
 
         return (
         <div>
-            <h1>Welcome to the Attraction Show Page!</h1>
+            <h2> {this.state.attractionInfo.name}</h2>
+            { this.state.currentUser ?
+                <>
+                <button
+                onClick={ e => { this.addToFavorites() }}
+                >Add to Favorites</button>
+                </>
+                :
+                <>
+                    <p>Log in to save to your favorites!</p>
+                </>
+            }
+            <div className="showFavorite">
+
+                <h5> { this.state.favorites.length } users have added this to their favorites</h5>
+            </div>
 
             <AttractionDetails {...this.state.attractionInfo} />
-            <button
-            onClick={ e => { this.addToFavorites() }}
-            >Add to Favorites</button>
-            <h3> { this.state.favorites.length } users have added this to their favorites</h3>
             { this.state.currentUser.admin ?
             <>
             

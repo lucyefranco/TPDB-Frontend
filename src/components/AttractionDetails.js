@@ -3,10 +3,12 @@ import React from 'react'
 const AttractionDetails = (props) => {
     return (
         <div>
-            <h1> { props.name } </h1>
-            <h3> { props.type } </h3>
-            <h3> { props.openingDate } </h3>
-            <h3>About</h3>
+            <div className="showDetails">
+                <h5> { props.type } </h5>
+                <h5> { props.openingDate } </h5>
+            </div>
+
+            <h4>About</h4>
             <p> { props.about } </p>
         </div>
     )

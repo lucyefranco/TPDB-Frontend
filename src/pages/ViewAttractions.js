@@ -22,15 +22,14 @@ class ViewAttractions extends Component {
     render() {
         let attractionsList = this.state.attractions && this.state.attractions.map((attraction, index) => {
             return (
-                <div key={ index }>
+                <div key={ index } className="previewCard">
                     <AttractionsPreview { ...attraction } />
-                    <Link to={ `/attractions/${attraction.id}` }>See More</Link>
                 </div>
             )
         })
         return (
             <div>
-                <h2>Here's your list of attractions</h2>
+                <h2> Attractions </h2>
                 { this.state.attractions ? attractionsList : 'Loading...' }
             </div>
         )
