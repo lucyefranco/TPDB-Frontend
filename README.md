@@ -10,7 +10,7 @@ ___
 
 
 ### About This Project
-For my final project with General Assembly, I wanted to do something that I would actually use and be passionate about building. As a huge Theme Park fan, I got the inspiration for this project while listening to a podcast where they joked about making an IMDB for Theme Parks. 
+For my final project with General Assembly, I wanted to do something that I would actually use and be passionate about building. As a huge Theme Park fan, I got the inspiration for this project while listening to a podcast where they joked about why an IMDB for Theme Parks doesn't exist. The lightbulb above my head went off and it hasn't left me since.
 
 
 
@@ -68,7 +68,9 @@ ___
 
 
 ### Special Thanks
-I would like our instructors at General Assembly for their guidance along the way. This includes Brock Whitbread-Cole, James Sinkler, Seanny Phoenix, Jacob Kleiman, Uyen Lam, Michael Petty, among others. Additionally, I couldn't have done it without the "Party Bus" - (in no particular order) Jane Cho, Casey Jenkins, Lauren Nguyen, Jamie Cabrigas, Brock Molmen, Ashley Nguyen, and Kelsey Whallon.
+I would like our instructors at General Assembly for their guidance along the way. This includes Brock Whitbread-Cole, James Sinkler, Seanny Phoenix, Jacob Kleiman, Uyen Lam, Michael Petty, among others. Additionally, I couldn't have done it without the "Party Bus" within our cohort - (in no particular order) Jane Cho, Casey Jenkins, Lauren Nguyen, Jamie Cabrigas, Brock Molmen, Ashley Nguyen, and Kelsey Whallon.
+
+Of course, a big thank you to Podcast: The Ride for the inspiration and idea for this project.
 
  And lastly, thank you to all the theme parks and their creators for making such wonderful experiences.
 
