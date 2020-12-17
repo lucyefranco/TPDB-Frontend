@@ -20,12 +20,12 @@ ___
 
 ### Screenshots
 
-![Home Page](./public/screenshots/HomePage.png)
-![List Page](./public/screenshots/AttractionList.png)
-![Attraction Show Page](./public/screenshots/AttractionShowPage.png)
-![Admin Dashboard](./public/screenshots/Dashboard.png)
-![New Theme Park Entry](./public/screenshots/NewEntry.png)
-![Profile Page](./public/screenshots/Profile.png)
+![Home Page](/public/screenshots/HomePage.png)
+![List Page](/public/screenshots/AttractionList.png)
+![Attraction Show Page](/public/screenshots/AttractionShowPage.png)
+![Admin Dashboard](/public/screenshots/Dashboard.png)
+![New Theme Park Entry](/public/screenshots/NewEntry.png)
+![Profile Page](/public/screenshots/Profile.png)
 
 
 
@@ -47,9 +47,9 @@ ___
 
 
 ### Wireframes
-![Wireframe](./public/screenshots/HomePageWireframe.png)
-![Wireframe](./public/screenshots/ShowPageWireframe.png)
-![Wireframe](./public/screenshots/DashboardWireframe.png)
+![Wireframe](/public/screenshots/HomePageWireframe.png)
+![Wireframe](/public/screenshots/ShowPageWireframe.png)
+![Wireframe](/public/screenshots/DashboardWireframe.png)
 
 
 
