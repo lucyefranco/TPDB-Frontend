@@ -53,6 +53,7 @@ class NewCreativeEntry extends Component {
                             }}
                             value= { this.state.about }
                         />
+                        <br />
                         <button className="submitBtn">Submit</button>
                         </div>
                     </form>
