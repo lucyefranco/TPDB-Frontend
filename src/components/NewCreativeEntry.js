@@ -21,13 +21,13 @@ class NewCreativeEntry extends Component {
         }
 
         return (
-            <div>
+            <div className="newEntry">
                 <div>
                     <button onClick={ this.props.onClose } className="closeButton">
                         Close
                     </button>
                 </div>
-                <h3>Submit a New Creative</h3>
+                <h5>Submit a New Creative</h5>
                 <div>
                     <form className="creativeEntryForm" onSubmit={ this.handleSubmit }>
                         <div>
@@ -42,6 +42,7 @@ class NewCreativeEntry extends Component {
                                 value= { this.state.name }
                             >
                             </input>
+                            <br />
                         <label>About:</label>
                         <textarea className="commentInput"
                             name = "about"

@@ -134,15 +134,6 @@ class ThemeParkShow extends Component {
                 }
 
             </div>
-            { this.state.currentUser.admin ?
-            <>
-            <button>Edit</button>
-            </>
-            :
-            <>
-            
-            </>
-            }
         
                 <h4>Known Attractions</h4>
                 { this.state.attractions ? attractionsList : "No attractions connected to this Theme Park." }

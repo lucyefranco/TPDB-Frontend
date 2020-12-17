@@ -36,13 +36,13 @@ class NewThemeParkEntry extends Component {
         }
 
         return (
-            <div>
+            <div className="newEntry">
                 <div>
                     <button onClick={ this.props.onClose } className="closeButton">
                         Close
                     </button>
                 </div>
-                <h3>Submit a New Attraction</h3>
+                <h5>Submit a New Theme Park</h5>
                 <div>
                     <form className="themeParkEntryForm" onSubmit={ this.handleSubmit }>
                         <div>
@@ -57,6 +57,7 @@ class NewThemeParkEntry extends Component {
                                 value= { this.state.name }
                             >
                             </input>
+                            <br />
                             <label>City: </label>
                             <input
                                 name = "city"
@@ -68,6 +69,7 @@ class NewThemeParkEntry extends Component {
                                 value= { this.state.city }
                             >
                             </input>
+                            <br />
                             <label>State: </label>
                             <input
                                 name = "state"
@@ -79,6 +81,7 @@ class NewThemeParkEntry extends Component {
                                 value= { this.state.state }
                             >
                             </input>
+                            <br />
                             <label>Country: </label>
                             <input
                                 name = "country"
@@ -90,6 +93,7 @@ class NewThemeParkEntry extends Component {
                                 value= { this.state.country }
                             >
                             </input>
+                            <br />
                             <label>Website: </label>
                             <input
                                 name = "website"
@@ -101,6 +105,7 @@ class NewThemeParkEntry extends Component {
                                 value= { this.state.website }
                             >
                             </input>
+                            <br />
                             <label>Operating Company: </label>
                             <input
                                 name = "operatingCompany"
@@ -112,6 +117,7 @@ class NewThemeParkEntry extends Component {
                                 value= { this.state.operatingCompany }
                             >
                             </input>
+                            <br />
                             <label>Opening Date: </label>
                             <input
                                 name = "openingDate"
