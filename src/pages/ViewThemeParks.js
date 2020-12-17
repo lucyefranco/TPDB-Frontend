@@ -22,15 +22,14 @@ class ViewThemeParks extends Component {
     render() {
         let themeParksList = this.state.themeParks && this.state.themeParks.map((themeParks, index) => {
             return (
-                <div key={ index }>
+                <div key={ index } className="previewCard">
                     <ThemeParkPreview { ...themeParks } />
-                    <Link to={ `/themeparks/${themeParks.id}` }>See More</Link>
                 </div>
             )
         })
         return (
             <div>
-                <h2>Here's your list of theme parks</h2>
+                <h2>Theme Parks</h2>
                 { this.state.themeParks ? themeParksList : 'Loading...' }
             </div>
         )

@@ -70,20 +70,32 @@ class CreativeShow extends Component {
     render() {
         let attractionsList = this.state.connectedAttractions && this.state.connectedAttractions.map((attraction, index) => {
             return (
-                <div>
+                <div className="connections">
                     <AttachedAttractions { ...attraction } key={ index } />
-                    <Link to={ `/attractions/${attraction.id}` } >Read More</Link>
+                    <Link to={ `/attractions/${attraction.id}` } className="seeMoreLink" >Read More</Link>
                 </div>
             )
         })
         return (
         <div>
-            <h1>Welcome to the Creative Show Page!</h1>
+            <h2> { this.state.creativeInfo.name } </h2>
+            <div className="showFavorite">
+            { this.state.userId ?
+                    <>
+                    <button
+                    onClick={ e => { this.addToFavorites() }}
+                    >Add to Favorites</button>
+                    </>
+                    :
+                    <>
+                        <p>Log in to save to your favorites!</p>
+                    </>
+                }
+                <h5> { this.state.favorites.length } users have added this to their favorites</h5>
+            </div>
+
             <CreativeDetails {...this.state.creativeInfo} />
-            <button
-            onClick={ e => { this.addToFavorites() }}
-            >Add to Favorites</button>
-            <h3> { this.state.favorites.length } users have added this to their favorites</h3>
+
             { this.state.currentUser.admin ?
             <>
                 <button>Edit</button>
@@ -93,8 +105,8 @@ class CreativeShow extends Component {
             <>
             </>
             }
-            <h2>Connected Attractions</h2>
-            { this.state.connectedAttractions ? attractionsList : "Loading.." }
+            <h4>Connected Attractions</h4>
+            { this.state.connectedAttractions ? attractionsList : "No attractions connected to this creative." }
         </div>
         )
     }

@@ -90,21 +90,31 @@ class ThemeParkShow extends Component {
     render() {
         let attractionsList = this.state.attractions && this.state.attractions.map((attraction, index) => {
             return (
-                <div>
+                <div className="connections">
                 <AttachedAttractions { ...attraction } key={ index } />
-                <Link to={ `/attraction/${ attraction.id}` } >Read More</Link>
+                <Link to={ `/attraction/${ attraction.id}` } className="seeMoreLink" >Read More</Link>
                 </div>
             )
         })
 
         return (
         <div>
-            <h1>Welcome to the Theme Park Show Page!</h1>
+            <h2> { this.state.themeParkInfo.name }</h2>
+            <div className="showFavorite">
+                { this.state.userId ?
+                    <>
+                    <button
+                    onClick={ e => { this.addToFavorites() }}
+                    >Add to Favorites</button>
+                    </>
+                    :
+                    <>
+                        <p>Log in to save to your favorites!</p>
+                    </>
+                }
+                <h5> { this.state.favorites.length } users have added this to their favorites</h5>
+            </div>
             <ThemeParkDetails {...this.state.themeParkInfo} />
-            <button
-            onClick={ e => { this.addToFavorites() }}
-            >Add to Favorites</button>
-            <h3> { this.state.favorites.length } users have added this to their favorites</h3>
         <div>
             <div>
                 { this.state.currentUser.admin ? 
@@ -124,8 +134,18 @@ class ThemeParkShow extends Component {
                 }
 
             </div>
-                <h2>Known Attractions</h2>
-                { this.state.attractions ? attractionsList : "Loading.." }
+            { this.state.currentUser.admin ?
+            <>
+            <button>Edit</button>
+            </>
+            :
+            <>
+            
+            </>
+            }
+        
+                <h4>Known Attractions</h4>
+                { this.state.attractions ? attractionsList : "No attractions connected to this Theme Park." }
             
             </div>
         </div>
