@@ -108,12 +108,25 @@ class adminDashboard extends Component {
                 <div>
                     { this.state.currentUser.admin ? 
                     <>
-                    <h1>Welcome to the Admin Dashboard! </h1>
-                    <div>
-                        <h3> { this.state.themeParks.length } Theme Parks</h3>
-                        <h3> { this.state.attractions.length } Attractions</h3>
-                        <h3> { this.state.creatives.length } Creatives</h3>
-                        <h3> { this.state.users.length } Users </h3>
+                    <h2> Admin Dashboard </h2>
+                    <div className="dashStats">
+                        <div className="stats">
+                            <h3> { this.state.themeParks.length }</h3>
+                            <h3> Theme Parks </h3>
+                        </div>
+                        <div className="stats">
+                            <h3> { this.state.attractions.length } </h3>
+                            <h3> Attractions </h3>
+                        </div>
+                        <div className="stats">
+                            <h3> { this.state.creatives.length } </h3>
+                            <h3> Creatives </h3>
+                        </div>
+                        <div className="stats">
+                            <h3> { this.state.users.length } </h3>
+                            <h3> Total Users</h3>
+                        </div>
+
                     </div>
                     {/* THEME PARKS */}
                     <button 

@@ -40,8 +40,9 @@ class Profile extends Component {
     let attractionsList = this.state.favoriteAttractions && this.state.favoriteAttractions.map((attraction, index) => {
       return (
           <div>
+              <Link to={ `/attractions/${attraction.attractionId}` } className="seeMoreLink">
               <DisplayFavorites { ...attraction } key={ index } />
-              <Link to={ `/attractions/${attraction.attractionId}` } >Read More</Link>
+              </Link>
           </div>
       )
     })
@@ -49,8 +50,9 @@ class Profile extends Component {
     let parksList = this.state.favoriteParks && this.state.favoriteParks.map((park, index) => {
       return (
           <div>
+              <Link to={ `/themeParks/${park.themeParkId}` }  className="seeMoreLink">
               <DisplayFavorites { ...park } key={ index } />
-              <Link to={ `/themeParks/${park.themeParkId}` } >Read More</Link>
+              </Link>
           </div>
       )
     })
@@ -58,27 +60,31 @@ class Profile extends Component {
     let creativesList = this.state.favoriteCreatives && this.state.favoriteCreatives.map((creative, index) => {
       return (
           <div>
+              <Link to={ `/creatives/${creative.creativeId}` } className="seeMoreLink" >
               <DisplayFavorites { ...creative} key={ index } />
-              <Link to={ `/creatives/${creative.creativeId}` } >Read More</Link>
+              </Link>
           </div>
       )
     })
 
     return (
       <div>
-      <h1>Welcome to your profile</h1>
-        <div>
-          <h4>Your Favorite Attractions</h4>
+      <h2>Welcome</h2>
+        <h3>View Your Favorites</h3>
+        <div className="profileContent">
+        <div className="profileColumn">
+          <h4>Attractions</h4>
           { this.state.favoriteAttractions ? attractionsList : "You have not favorited any attraction!" }
         </div>
-        <div>
-          <h4>Your Favorite Theme Parks</h4>
+        <div className="profileColumn">
+          <h4>Theme Parks</h4>
           { this.state.favoriteParks ? parksList : "You have not favorited any Theme Parks!" }
         </div>
-        <div>
-        <h4>Your Favorite Creatives</h4>
+        <div className="profileColumn">
+        <h4>Creatives</h4>
           { this.state.favoriteCreatives ? creativesList : "You have not favorited any Creatives!" }
         </div>
+      </div>
       </div>
     )
   }
