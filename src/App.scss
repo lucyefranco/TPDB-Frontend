@@ -1,6 +1,7 @@
-// Universal Styling
+// UNIVERSAL
 .App {
     font-family: 'Roboto', sans-serif;
+    background-color: #f2f2f2;
 }
 h1 {
     font-family: 'Orbitron', sans-serif;
@@ -9,12 +10,49 @@ h1 {
     margin: 0 auto;
 }
 
-// Home
+// HOME
 .homeHeader {
     background: url(https://imgur.com/hthguko.jpg);
     height: 45vh;
     background-size: cover;
     padding: 30px;
+    margin-bottom: 20px;
+}
+
+.welcomeMessage {
+    display: flex;
+    margin: 0 auto;
+    width: 80vw;
+    justify-content: center;
+    
+}
+
+.homeButtonContainer {
+    display:flex;
+    justify-content: space-around;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.homeButton {
+    background-color: #311984;
+    margin: 10px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    width: 20vw;
+
+    &:hover {
+        opacity: 90%;
+        transform: scale(1.05);
+    }
+}
+
+.about {
+    margin: 0 auto;
+    width: 80vw;
 }
 
 // Dashboard
