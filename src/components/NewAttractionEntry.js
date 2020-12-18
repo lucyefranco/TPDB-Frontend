@@ -48,6 +48,7 @@ class NewAttractionEntry extends Component {
                                 value= { this.state.name }
                             >
                             </input>
+                            <br />
                             <label>Type: </label>
                             <select
                                 name = "type"
@@ -63,6 +64,7 @@ class NewAttractionEntry extends Component {
                                 <option value="Nighttime spectacular"> Nighttime Spectacular </option>
                                 <option value="Walkthrough"> Walkthrough </option>
                             </select>
+                            <br />
                             <label>Opening Date: </label>
                             <input
                                 name = "openingDate"
@@ -74,6 +76,7 @@ class NewAttractionEntry extends Component {
                                 value= { this.state.openingDate }
                             >
                             </input>
+                            <br />
                         <label>About:</label>
                         <textarea className="commentInput"
                             name = "about"
@@ -84,6 +87,7 @@ class NewAttractionEntry extends Component {
                             }}
                             value= { this.state.about }
                         />
+                        <br />
                         <button className="submitBtn">Submit</button>
                         </div>
                     </form>
