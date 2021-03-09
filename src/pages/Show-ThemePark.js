@@ -92,7 +92,9 @@ class ThemeParkShow extends Component {
             return (
                 <div className="connections">
                 <AttachedAttractions { ...attraction } key={ index } />
-                <Link to={ `/attraction/${ attraction.id}` } className="seeMoreLink" >Read More</Link>
+                
+                <Link to={ `/attractions/${ attraction.id}` } className="seeMoreLink" >Read More</Link>
+                
                 </div>
             )
         })

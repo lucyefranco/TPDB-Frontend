@@ -6,7 +6,7 @@ const Register = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [admin, setAdmin] = useState(true);
+  const [admin, setAdmin] = useState(false);
 
   const handleName = e => {
     setName(e.target.value)
@@ -21,7 +21,7 @@ const Register = props => {
     setConfirmPassword(e.target.value)
   }
   const handleAdmin = () => {
-    setAdmin(true)
+    setAdmin(false)
   }
 
   const handleSubmit = e => {
@@ -87,7 +87,7 @@ const Register = props => {
         </div>
         <input
         onChange={ handleAdmin }
-        value={ true } 
+        value={ false } 
         type="hidden">
         </input>
         <button type="submit">Register</button>
