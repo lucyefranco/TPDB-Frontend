@@ -3,7 +3,6 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Routes from './config/Routes'
 import './App.css'
-import './App.scss'
 import UserModel from './models/user'
 
 function App() {
